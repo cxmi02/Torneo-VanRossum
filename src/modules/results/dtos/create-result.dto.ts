@@ -1,10 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 import { Tournament } from 'src/modules/tournaments/entities/tournaments.entity';
 import { Player } from 'src/modules/players/entities/players.entity';
 
 export class CreateResultDto {
+  @ApiProperty()
+  @IsNumber()
+  resultId: number;
+  
   @ApiProperty()
   @IsNotEmpty()
   tournament: Tournament;
