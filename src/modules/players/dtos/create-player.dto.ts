@@ -4,6 +4,11 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class CreatePlayerDto {
   @ApiProperty()
   @IsNotEmpty()
+  @IsNumber()
+  playerId: number;
+ 
+  @ApiProperty()
+  @IsNotEmpty()
   @IsString()
   firstName: string;
 

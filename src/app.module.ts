@@ -1,20 +1,27 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { PlayersServices } from './modules/players/services/players.service';
+import { PlayersModule } from './modules/players/players.module';
+import { PlayersController } from './modules/players/controllers/players.controllers';
+import { ResultModule } from './modules/results/results.module';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
       port: parseInt(process.env.DB_PORT) || 5432,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      username: 'camila',
+      password: 'mypassword',
+      database: 'Torneo_VanRossum',
       autoLoadEntities: true,
       synchronize: true,
     }),
+    PlayersModule,
+    ResultModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [PlayersController, ResultModule],
+  providers: [PlayersServices, PlayersController],
 })
-export class AppModule {}
+export class AppModule {}
