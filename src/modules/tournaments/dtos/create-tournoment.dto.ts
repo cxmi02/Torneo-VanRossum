@@ -1,31 +1,29 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-
+import { IsDate, IsNotEmpty, IsString } from 'class-validator';
 import { Result } from 'src/modules/results/entities/results.entity';
 
-@Entity()
-export class Tournament {
-  @PrimaryGeneratedColumn('increment')
+export class CreateTournomentDto {
   @ApiProperty()
-  tournomentId: number;
-
-  @Column()
-  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   name: string;
 
-  @Column()
   @ApiProperty()
+  @IsNotEmpty()
+  @IsDate()
   startDate: Date;
 
-  @Column()
   @ApiProperty()
+  @IsNotEmpty()
+  @IsDate()
   endDate: Date;
 
-  @Column()
   @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   location: string;
 
-  @OneToMany(() => Result, (result) => result.tournament)
   @ApiProperty()
+  @IsNotEmpty()
   results: Result[];
 }

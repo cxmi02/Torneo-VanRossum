@@ -5,7 +5,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Player {
   @PrimaryGeneratedColumn('increment')
   @ApiProperty()
-  id: number;
+  playerId: number;
 
   @Column()
   @ApiProperty()

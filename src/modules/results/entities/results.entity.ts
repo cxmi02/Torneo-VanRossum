@@ -8,7 +8,7 @@ import { Player } from 'src/modules/players/entities/players.entity';
 export class Result {
   @PrimaryGeneratedColumn('increment')
   @ApiProperty()
-  id: number;
+  resultId: number;
 
   @ManyToOne(() => Tournament, (tournament) => tournament.results, {
     eager: true,
